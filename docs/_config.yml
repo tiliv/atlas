@@ -1,1 +1,18 @@
+title: Atlas
+license: HL3-BDS-MEDIA-SUP-SV
+license_badge: https://img.shields.io/static/v1?label=Hippocratic%20License&message=HL3-BDS-MEDIA-SUP-SV&labelColor=222424&color=716758
+civic_node: Fort Collins
+civic_tag: For immediate replication
+
+preferences:
+  dark: true
+
+defaults:
+  - scope: {path: ""}
+    values:
+      preferences: atlas
+
+theme: null
 destination: _site
+markdown: kramdown
+permalink: pretty
