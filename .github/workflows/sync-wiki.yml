@@ -25,9 +25,10 @@ jobs:
       - uses: actions/configure-pages@v5
       - run: bin/pre-build.sh
       - run: |
+          shopt -s nullglob
+          git add wiki docs/_includes/*.external.md
           if ! git diff --cached --quiet; then
             echo "Staging wiki reference update."
-            git add wiki docs/_includes/*.external.md
             git commit -m "[skip ci] chore(submodule): wiki"
             git push
           else
