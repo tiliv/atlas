@@ -1,0 +1,15 @@
+a[href="https://github.com/tiliv/atlas"] {
+  font-family: BrandFont, Helvetica, sans-serif;
+}
+
+a[href="https://github.com/tiliv/anecdote"] {
+  font-family: "Courier New", Courier, monospace;
+}
+
+@font-face {
+  font-family: AntibodyFont;
+  src: url('https://antibody.discoverywritten.com/fonts/marlboro.regular.ttf') format('truetype');
+}
+a[href="https://github.com/tiliv/antibody"] {
+  font-family: AntibodyFont, Georgia, serif;
+}

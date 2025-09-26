@@ -1,9 +1,20 @@
 @font-face {
   font-family: BrandFont;
-  src: url('Wonderia.otf') format('opentype');
+  src: url('Rosehot.ttf') format('truetype');
+}
+@font-face {
+  font-family: StyledFont;
+  src: url('BebasNeue-Regular.otf') format('opentype');
 }
 .brand {
   font-family: BrandFont, Arial, sans-serif;
+}
+.styled {
+  font-family: StyledFont, Helvetica, sans-serif;
+  font-size: 1.3em;
+}
+.guidance {
+  font-family: Georgia, serif;
 }
 
 :root {
@@ -18,35 +29,42 @@
   --sh: oklch(90.097% 0.03692 310.364);
   --stroke: oklch(93.283% 0.02625 58.16);
   --shade-hard: oklch(95.519% 0.02052 174.248 / 0.95);
-  --shade: oklch(90.41% 0.00349 176.147 / 0.2);
+  --shade: #dde0df33;
   --border: oklch(1 0 0 / 25%);
-  --accent: #997000;
-  --accent-fg: oklch(0.9054 0.0455 309.91);
-  --accent-sh: #000000a0;
+  --accent: #d6dfa5;
+  --accent-fg: #354a4b;
+  --accent-sh: #ffffffa0;
 }
 :root[data-dark="true"] {
-  --bg1: oklch(51.871% 0.02604 78.012);
+  --bg1: #716758;
   --bg2: #909285;
   --io: oklch(88.831% 0.07423 310.868);
   --fg1: oklch(0.9037 0 0);
   --fg2: oklch(96.002% 0.0356 113.986);
   --fg-inverse: oklch(0.1076 0 0);
-  --sh: oklch(20.149% 0.01085 311.883);
-  --stroke: oklch(87.818% 0.01959 41.577);
+  --sh: #151a1a;
+  --stroke: oklch(25.906% 0.00488 39.13);
   --shade-hard: oklch(25.786% 0.00346 165.253 / 0.95);
-  --shade: oklch(25.825% 0.00295 197.523 / 0.55);
-  --border: oklch(0 0 0 / 25%);
+  --shade: #2224248c;
+  --border: rgb(0 0 0 / 20%);
+  --border-inverse: rgb(255 255 255 / 70%);
 }
 
+html, body {
+  width: 100vw;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 html::before {
   content:"";
   position:fixed; inset:0; z-index:-1; pointer-events:none;
 
   background:
     radial-gradient(
-      ellipse 100% 200% at center top,
+      ellipse 100% 200% at left center,
       var(--bg2) 0%,
-      var(--bg1) 60%, var(--bg1) 100%
+      var(--bg1) 80%, var(--bg1) 100%
     ),
     var(--bg1);
 
@@ -59,14 +77,9 @@ html::before {
 }
 
 body {
-  font-family: Verdana;
+  font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  min-height: 100%;
-  height: max-content;
-  padding: 0;
-  margin: 0;
   color: var(--fg2);
 }
 
@@ -108,14 +121,15 @@ body {
   transition: padding-bottom 0.5s ease-in-out;
   white-space: nowrap;
   height: var(--title-scale);
-  padding-top: 12em;
+  /* background: var(--shade); */
+  padding: 2em 0;
 }
 #title, #title-stroke {
   z-index: 5;
   position: absolute;
   text-shadow: none;
-  text-stroke: .2em transparent;
-  -webkit-text-stroke: .2em transparent;
+  text-stroke: .1em transparent;
+  -webkit-text-stroke: .1em transparent;
   transition: font-size 0.5s ease-in-out;
 }
 #title-stroke {
@@ -127,6 +141,10 @@ body {
 #title-stack h1 {
   font-size: var(--title-scale);
   margin: auto;
+  text-shadow: inherit;
+  text-decoration: inherit;
+  text-decoration-thickness: from-font;
+  text-decoration-color: var(--accent);
 }
 
 #replication {
@@ -135,59 +153,21 @@ body {
   font-weight: bold;
   text-shadow: 0 2px var(--sh) !important;
   font-family: ArticleFont, "Times New Roman", times, serif;
-  transition: margin-top 0.5s ease-in-out;
-  margin-bottom: 1em;
-}
-
-main {
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 900px;
-  min-height: 400px;
-  place-content: center;
-  margin: auto;
-  width: 100%;
-  box-sizing: border-box;
-  background-color: var(--shade);
-  box-shadow: 0 0 .5rem var(--border);
-  border: 1px solid var(--border);
-}
-
-a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-code {
-  font-size: 1.2em;
-  background-color: var(--accent);
-  padding: .2em .4em;
-  color: var(--accent-fg);
-  text-shadow: 1px 3px var(--accent-sh);
-}
-
-.links {
-  z-index: 5;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-align: center;
-  gap: 0 35px;
-  font-size: 1.2em;
-  padding: 3px 0;
-  margin-bottom: 2rem;
-  border: 0;
+  padding-bottom: 1em;
+  margin: 0;
+  /* background: var(--shade); */
 }
 
 /* Footer */
 #footer {
   display: flex;
+  background: var(--shade);
+  place-content: center;
   flex-direction: column;
   text-align: center;
   color: var(--fg2);
   font-size: 0.8em;
+  padding: 0.5em;
 }
 
 .sr-only {
