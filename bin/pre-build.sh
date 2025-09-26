@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
+git submodule update --init --remote --recursive
+
 cp "wiki/Help-us-chart-Fort-Collins.md" docs/_includes/contribute.external.md
 cp "wiki/Projects.md" docs/_includes/projects.external.md
