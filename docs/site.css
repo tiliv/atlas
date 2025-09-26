@@ -49,6 +49,12 @@
   --border: rgb(0 0 0 / 20%);
   --border-inverse: rgb(255 255 255 / 70%);
 }
+@media (max-width: 800px) {
+  :root {
+    --title-scale: 6em;
+    font-size: 0.8em;
+  }
+}
 
 html, body {
   width: 100vw;
@@ -120,8 +126,7 @@ body {
   z-index: 1;
   transition: padding-bottom 0.5s ease-in-out;
   white-space: nowrap;
-  height: var(--title-scale);
-  /* background: var(--shade); */
+  height: 160px;
   padding: 2em 0;
 }
 #title, #title-stroke {
@@ -155,7 +160,6 @@ body {
   font-family: ArticleFont, "Times New Roman", times, serif;
   padding-bottom: 1em;
   margin: 0;
-  /* background: var(--shade); */
 }
 
 /* Footer */

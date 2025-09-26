@@ -41,6 +41,7 @@ main article {
     inset 0 2px 2px var(--shade)
     ;
 }
+
 main article::before {
   content: attr(aria-description);
   position: relative;
@@ -101,4 +102,14 @@ code {
 }
 .top {
   align-items: flex-start;
+}
+@media (max-width: 800px) {
+  .horizontal {
+    flex-direction: column;
+    justify-content: center;
+  }
+  main article {
+    min-width: unset;
+    max-width: unset;
+  }
 }
