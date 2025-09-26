@@ -1,0 +1,35 @@
+# Sample workflow for building and deploying a Jekyll site to GitHub Pages
+name: Update wiki submodule
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 6 * * *'   # daily, adjust
+
+permissions:
+  contents: write  # commit powers
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          submodules: true
+      - name: Git identity
+        run: |
+          git config user.name  "sync-wiki[bot]"
+          git config user.email "atlas+sync-wiki@discoverywritten.com"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - uses: actions/configure-pages@v5
+      - run: bin/pre-build.sh
+      - run: |
+          if ! git diff --cached --quiet; then
+            echo "Staging wiki reference update."
+            git commit -m "[skip ci] chore(submodule): wiki"
+            git push
+          else
+            echo "No wiki updates."
+            exit 0
+          fi
