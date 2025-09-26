@@ -12,8 +12,14 @@
 - Offline-ready
 
 ## [ANTIBODY](https://github.com/tiliv/antibody)
+- Markdown-powered static sites with github.com as CMS
 - Free public hobby writing platform
-- Accessiblity-first
+- Individuals or groups, Pull Request journalism hubs
+- Embraces living drafts
+- Activity history by important date ranges
+- Paragraph history over time
+- Display outdated archival text with aware UI
+- Full sitemapped
 - Vendorless design
 - Image/audio exhibits
-- Paragraph history integration
+- Accessibility for everyone
