@@ -19,7 +19,7 @@
 - Activity history by important date ranges
 - Paragraph history over time
 - Display outdated archival text with aware UI
-- Full sitemapped
+- Sitemaps per author
 - Vendorless design
 - Image/audio exhibits
 - Accessibility for everyone
