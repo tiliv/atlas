@@ -1,7 +1,9 @@
 ## [Atlas](https://github.com/tiliv/atlas)
-- Project directory
+- Directories for local-only data
 - Donation-driven stewardship
 - Community organization
+- Not for bots or search engines
+- Automation and AI assistance that works for People
 
 ## [Anecdote](https://github.com/tiliv/anecdote)
 - QR-serialized public services
