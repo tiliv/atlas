@@ -2,5 +2,5 @@
 
 git submodule update --init --remote wiki
 
-cp "wiki/Help-us-chart-Fort-Collins.md" docs/_includes/contribute.external.md
+cp "wiki/Contribute.md" docs/_includes/contribute.external.md
 cp "wiki/Projects.md" docs/_includes/projects.external.md
