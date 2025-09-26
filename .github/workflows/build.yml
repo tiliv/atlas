@@ -26,7 +26,6 @@ jobs:
     environment:
       name: github-pages
     runs-on: ubuntu-latest
-    container: ghcr.io/:latest
     steps:
       - uses: actions/checkout@v5
       - uses: actions/configure-pages@v5
