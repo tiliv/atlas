@@ -8,13 +8,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    img-src 'self' https://img.shields.io;
-    script-src 'self' 'unsafe-inline';
-    style-src 'self' 'unsafe-inline';
+    worker-src blob:;
+    connect-src 'self' https://unpkg.com https://demotiles.maplibre.org;
+    img-src 'self' data: https://img.shields.io;
+    script-src 'self' 'unsafe-inline' https://unpkg.com;
+    style-src 'self' 'unsafe-inline' https://unpkg.com;
     font-src 'self' https://antibody.discoverywritten.com;
   ">
   <link rel="stylesheet" href="/site.css">
   <link rel="stylesheet" href="/content.css">
+  <link rel="stylesheet" href="/map.css">
   <link rel="stylesheet" href="/projects.css">
   <script src="/preferences.js"></script>
   <script nonce="__init__">
@@ -26,19 +29,10 @@
         return [k, on => prefer[k] = preferences.use(k)(on)];  // call
       }));
   </script>
+  <link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
 </head>
 <body>
-  <div id="scroll-top" style="display: none !important;">
-    <button
-      id="preferences-toggle"
-      aria-haspopup="true"
-      aria-expanded="false"
-      aria-controls="preferences"
-    ></button>
-    <form data-scope="{{ page.preferences }}" id="preferences" role="region" aria-labelledby="preferences-toggle">
-      <label for="prefer-dark"><input id="prefer-dark" type="checkbox" name="dark" onchange="use.dark(this.checked)" />Darken</label>
-    </form>
-  </div>
   <div id="title-stack" class="brand" role="banner" aria-label="Project title">
     <a href="/" style="display: flex; justify-content: center;">
     <h1 id="title-stroke" inert>{{ site.title }}</h1>
@@ -55,11 +49,32 @@
       />
     </a>
   </p>
+  <div id="map" inert></div>
   <main class="styled">
     {{ content }}
   </main>
   <div id="footer">
     &nbsp;
   </div>
+<script>
+  const map = new maplibregl.Map({
+    container:'map',
+    ...({{ site.data.map.config | jsonify }}),
+  });
+
+  // add your data as sources + layers you control
+  map.on('load', async () => {
+    {% for kv in site.data.map.layers -%}
+    {%- assign k = kv[0] -%}
+    {%- assign layer = kv[1] -%}
+    map.addSource('{{ k }}', { type:'geojson', data: '/map/layers/{{ layer.file }}.geo.json' });
+    map.addLayer({ id:'{{ k }}-{{ layer.type }}', type:'{{ layer.type }}', source:'{{ k }}',
+      paint: {{ layer.paint | jsonify }} });
+    {%- endfor %}
+  });
+
+  const setVis = (id, on) => map.setLayoutProperty(id, 'visibility', on ? 'visible' : 'none');
+  // setVis('parks-fill', false); // start hidden
+</script>
 </body>
 </html>

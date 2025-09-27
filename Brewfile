@@ -1,0 +1,6 @@
+brew "gcc"
+brew "make"
+brew "osmium-tool"
+brew "gdal"
+brew "jq"
+brew "tippecanoe"

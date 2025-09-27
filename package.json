@@ -10,5 +10,10 @@
     "url": "git+https://github.com/tiliv/atlas.git"
   },
   "author": "",
-  "license": "HL3-BDS-MEDIA-SUP-SV"
+  "license": "HL3-BDS-MEDIA-SUP-SV",
+  "dependencies": {
+    "@mapbox/geojson-area": "^0.2.2",
+    "osmtogeojson": "^3.0.0-beta.5",
+    "pmtiles": "^4.3.0"
+  }
 }

@@ -1,0 +1,43 @@
+config:
+  renderWorldCopies: false
+  style: /maplibre.json
+  maxBounds: [[-109.060253, 36.992424], [-102.041524, 41.003444]]
+  center: [-105.0844, 40.5853]
+  zoom: 14
+layers:
+  city:
+    file: city_boundary
+    type: line
+    paint:
+      line-color: '#fff6'
+      line-width: 0
+  bikes:
+    file: bikeways
+    type: line
+    paint:
+      line-color: '#06c'
+      line-width: 2
+  highways:
+    file: highways_major
+    type: line
+    paint:
+      line-color: '#fff8'
+      line-width: 2
+  parks:
+    file: parks
+    type: fill
+    paint:
+      fill-color: '#0a0'
+      fill-opacity: 0.4
+  buildings:
+    file: buildings
+    type: fill
+    paint:
+      fill-color: '#fff2'
+      fill-opacity: 0.5
+  water:
+    file: water
+    type: fill
+    paint:
+      fill-color: '#00f'
+      fill-opacity: 0.4

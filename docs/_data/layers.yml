@@ -1,0 +1,23 @@
+# Each layer becomes data/layers/<key>.geo.json
+layers:
+  city_boundary:
+    overpass: |
+      [out:json][timeout:50];
+      area[wikidata="{{wikidata}}"]->.a;
+      rel(area.a)[type=boundary][boundary=administrative];
+      (._;>;); out body;
+  highways_major:
+    tags_filter: 'nwr/highway=motorway,primary,secondary,tertiary,trunk'
+    geometry: line
+  bikeways:
+    tags_filter: 'nwr/cycleway=*,nwr/highway=cycleway'
+    geometry: line
+  parks:
+    tags_filter: 'nwr/leisure=park,playground|nwr:landuse=grass,forest'
+    geometry: polygon
+  water:
+    tags_filter: 'nwr/natural=water,waterway=river,stream'
+    geometry: polygon
+  buildings:
+    tags_filter: 'nwr/building'
+    geometry: polygon
