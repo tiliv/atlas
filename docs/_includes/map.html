@@ -9,7 +9,6 @@
     osm: {{ site.data.map.osm | default: [] | jsonify }},
     atlas: {{ site.data.map.atlas | default: [] | jsonify }},
   };
-  const form = document.getElementById('map-controls');
 
   map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
   map.on('load', async () => {
@@ -21,7 +20,7 @@
         map.addLayer({ id: `${source}-${layer.type}`, source, ...layer });
       }
 
-      for (const cb of form.querySelectorAll('input[type=checkbox]')) {
+      for (const cb of document.querySelectorAll('.map-controls input[type=checkbox]')) {
         // cb.checked = !!spec.visible;
         cb.addEventListener("change", () => {
           const on = cb.checked ? "visible" : "none";

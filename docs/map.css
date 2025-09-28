@@ -3,14 +3,14 @@
   z-index: 5;
   inset: 0;
 }
-#map-controls {
+.map-controls {
   display: flex;
   flex-direction: row;
   padding: 0;
   margin: 0 1em 0 0;
 
 }
-#map-controls label {
+.map-controls label {
   display: flex;
   flex-direction: row;
   align-items: center;

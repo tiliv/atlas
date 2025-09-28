@@ -4,6 +4,13 @@ config:
   maxBounds: [[-109.060253, 36.992424], [-102.041524, 41.003444]]
   center: [-105.0844, 40.5853]
   zoom: 14
+atlas:
+  businesses:
+    file: businesses_2020
+    type: circle
+    paint:
+      circle-color: 'red'
+      circle-radius: 2
 osm:
   # city:
   #   file: city_boundary
