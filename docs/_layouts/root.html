@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="/content.css">
   <link rel="stylesheet" href="/map.css">
   <link rel="stylesheet" href="/projects.css">
-  <script src="/preferences.js"></script>
+  <!-- <script src="/preferences.js"></script>
   <script nonce="__init__">
     const preferences = PREFERENCES("{{ page.preferences }}"); // Scoped localStorage proxy
     const prefer = {{ site.preferences | jsonify }};  // Defaults, updates cache in this object
@@ -28,7 +28,7 @@
         prefer[k] = preferences.retain(k, prefer[k], { force: false });  // init
         return [k, on => prefer[k] = preferences.use(k)(on)];  // call
       }));
-  </script>
+  </script> -->
   <link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet"/>
   <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
 </head>
@@ -49,7 +49,7 @@
       />
     </a>
   </p>
-  <div id="map" inert></div>
+  <div id="map"></div>
   <main class="styled">
     {{ content }}
   </main>
@@ -73,7 +73,9 @@
     {%- endfor %}
   });
 
-  const setVis = (id, on) => map.setLayoutProperty(id, 'visibility', on ? 'visible' : 'none');
+  map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
+
+  // const setVis = (id, on) => map.setLayoutProperty(id, 'visibility', on ? 'visible' : 'none');
   // setVis('parks-fill', false); // start hidden
 </script>
 </body>
