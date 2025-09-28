@@ -1,4 +1,4 @@
-# Each layer becomes data/layers/<key>.geo.json
+# Each layer becomes docs/_data/osm/<key>.geo.json
 layers:
   city_boundary:
     overpass: |

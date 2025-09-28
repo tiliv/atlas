@@ -3,11 +3,11 @@
 set -euo pipefail
 PBF="docs/_data/city.osm.pbf"
 CFG="docs/_data/layers.yml"
-OUTDIR="docs/map/layers"
+OUTDIR="docs/map/osm"
 mkdir -p "$OUTDIR"
 
 ruby -ryaml -e '
-cfg = YAML.load_file(ARGV[0])["layers"]
+cfg = YAML.load_file(ARGV[0])["osm"]
 cfg.each do |key, spec|
   next if key == "city_boundary"
   tf  = spec["tags_filter"]

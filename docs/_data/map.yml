@@ -4,19 +4,19 @@ config:
   maxBounds: [[-109.060253, 36.992424], [-102.041524, 41.003444]]
   center: [-105.0844, 40.5853]
   zoom: 14
-layers:
-  city:
-    file: city_boundary
-    type: line
-    paint:
-      line-color: '#fff6'
-      line-width: 0
-  bikes:
-    file: bikeways
-    type: line
-    paint:
-      line-color: '#06c'
-      line-width: 2
+osm:
+  # city:
+  #   file: city_boundary
+  #   type: line
+  #   paint:
+  #     line-color: '#fff6'
+  #     line-width: 0
+  # bikes:
+  #   file: bikeways
+  #   type: line
+  #   paint:
+  #     line-color: '#06c'
+  #     line-width: 2
   highways:
     file: highways_major
     type: line

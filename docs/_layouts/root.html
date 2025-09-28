@@ -52,7 +52,21 @@
     {{ content }}
   </main>
   <div id="footer">
-    &nbsp;
+    <div style="margin: auto"></div>
+    <form id="map-controls">
+      {% for kv in site.data.map.osm %}
+      {%- assign source = kv[0] -%}
+      {%- assign layer = kv[1] -%}
+      <label for="toggle-{{ source }}" style="
+        background-color: {{ layer.paint['fill-color'] }};
+        color: {{ layer.paint['line-color'] }};
+      ">
+        <input type="checkbox" checked id="toggle-{{ source }}" name="{{ source }}-{{ layer.type }}" />
+        {{ layer.file | split:"_" | first | capitalize }}
+      </label>
+      {% endfor %}
+    </form>
+    <span>Mapping &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors</span>
   </div>
   {% include map.html %}
 </body>

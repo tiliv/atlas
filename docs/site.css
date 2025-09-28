@@ -155,13 +155,17 @@ body {
 /* Footer */
 #footer {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   background: var(--shade);
-  place-content: center;
-  flex-direction: column;
-  text-align: center;
   color: var(--fg2);
   font-size: 0.8em;
-  padding: 0.5em;
+  padding-right: 4em;
+}
+#footer > * {
+  position: relative;
+  z-index: 6;
 }
 
 .sr-only {

@@ -2,20 +2,33 @@
 <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
 <script>
   const map = new maplibregl.Map({
-    container:'map',
+    container: 'map',
     ...({{ site.data.map.config | jsonify }}),
   });
-
-  // add your data as sources + layers you control
-  map.on('load', async () => {
-    {% for kv in site.data.map.layers -%}
-    {%- assign k = kv[0] -%}
-    {%- assign layer = kv[1] -%}
-    map.addSource('{{ k }}', { type:'geojson', data: '/map/layers/{{ layer.file }}.geo.json' });
-    map.addLayer({ id:'{{ k }}-{{ layer.type }}', type:'{{ layer.type }}', source:'{{ k }}',
-      paint: {{ layer.paint | jsonify }} });
-    {%- endfor %}
-  });
+  const groups = {
+    osm: {{ site.data.map.osm | default: [] | jsonify }},
+    atlas: {{ site.data.map.atlas | default: [] | jsonify }},
+  };
+  const form = document.getElementById('map-controls');
 
   map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
+  map.on('load', async () => {
+
+    for (const group in groups) {
+      for (const source in groups[group]) {
+        const layer = groups[group][source];
+        map.addSource(source, { type:'geojson', data: `/map/${group}/${layer.file}.geo.json` });
+        map.addLayer({ id: `${source}-${layer.type}`, source, ...layer });
+      }
+
+      for (const cb of form.querySelectorAll('input[type=checkbox]')) {
+        // cb.checked = !!spec.visible;
+        cb.addEventListener("change", () => {
+          const on = cb.checked ? "visible" : "none";
+          map.setLayoutProperty(cb.name, "visibility", on);
+        });
+      }
+    }
+  });
+
 </script>

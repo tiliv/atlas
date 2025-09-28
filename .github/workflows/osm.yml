@@ -45,8 +45,8 @@ jobs:
         with:
           name: osm-layers
           path: |
-            docs/map/layers/*.geo.json
-            docs/map/city.pmtiles
+            docs/map/osm/*.geo.json
+            docs/map/osm/city.pmtiles
             docs/_data/city.osm.pbf
             docs/_data/boundary.geo.json
           if-no-files-found: ignore
