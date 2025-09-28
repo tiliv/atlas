@@ -1,0 +1,52 @@
+name: Build OSM Layers
+on:
+  workflow_dispatch:
+  #   inputs:
+  #     make_pmtiles:
+  #       type: boolean
+  #       default: false
+  # schedule:
+  #   - cron: "0 6 * * 1" # weekly refresh
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: System deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y osmium-tool gdal-bin jq curl
+          sudo apt-get install -y build-essential
+          sudo npm -g install osmtogeojson @mapbox/geojson-area pmtiles tippecanoe
+
+      - name: Fetch base extract
+        run: |
+          URL=$(cat config/region.url);
+          curl -L "$URL" -o docs/_data/base.osm.pbf
+          ls -lh docs/_data/base.osm.pbf
+
+      - name: Fetch city boundary (Overpass)
+        run: bash bin/osm-boundary.sh config/city.yml
+
+      - name: Clip to city polygon
+        run: bash bin/osm-clip.sh
+
+      - name: Split into layers
+        run: bash bin/osm-layers.sh
+
+      - name: "Optional: build PMTiles"
+        if: ${{ inputs.make_pmtiles == true }}
+        run: bash bin/make-vtiles.sh
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: osm-layers
+          path: |
+            docs/map/layers/*.geo.json
+            docs/map/city.pmtiles
+            docs/_data/city.osm.pbf
+            docs/_data/boundary.geo.json
+          if-no-files-found: ignore
