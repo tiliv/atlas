@@ -2,3 +2,4 @@ docs/_site
 docs/_data/base.osm.pbf
 node_modules
 .DS_Store
+.env
