@@ -1,18 +1,20 @@
 <link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet"/>
 <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
 <script>
+  const info = {};  // will be updated with map state
+  const config = {{ site.data.map.config | jsonify }};
   const map = new maplibregl.Map({
     container: 'map',
-    ...({{ site.data.map.config | jsonify }}),
+    ...config,
   });
+
   const groups = {
-    osm: {{ site.data.map.osm | default: [] | jsonify }},
-    atlas: {{ site.data.map.atlas | default: [] | jsonify }},
+    osm: {{ site.data.map.osm | default:[] | jsonify }},
+    atlas: {{ site.data.map.atlas | default:[] | jsonify }},
   };
 
   map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
   map.on('load', async () => {
-
     for (const group in groups) {
       for (const source in groups[group]) {
         const layer = groups[group][source];
@@ -21,7 +23,6 @@
       }
 
       for (const cb of document.querySelectorAll('.map-controls input[type=checkbox]')) {
-        // cb.checked = !!spec.visible;
         cb.addEventListener("change", () => {
           const on = cb.checked ? "visible" : "none";
           map.setLayoutProperty(cb.name, "visibility", on);
@@ -30,4 +31,30 @@
     }
   });
 
+  let raf = null;
+  function tick() {
+    raf = null;
+    const c = map.getCenter();
+    const b = map.getBounds();
+    const f = n => n.toFixed(6);
+    Object.assign(info, {
+      lng: f(c.lng),
+      lat: f(c.lat),
+      zoom: map.getZoom().toFixed(2),
+      bearing: map.getBearing().toFixed(1),
+      pitch: map.getPitch().toFixed(1),
+      south: f(b.getSouth()),
+      west: f(b.getWest()),
+      north: f(b.getNorth()),
+      east: f(b.getEast()),
+    });
+  }
+
+  const schedule = () => { if (!raf) raf = requestAnimationFrame(tick); };
+  map.on('load', schedule);
+  map.on('move', schedule);
+  map.on('zoom', schedule);
+  map.on('rotate', schedule);
+  map.on('pitch', schedule);
+  map.once('load', tick);
 </script>
