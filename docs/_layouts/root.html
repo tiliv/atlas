@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="/content.css">
   <link rel="stylesheet" href="/map.css">
   <link rel="stylesheet" href="/projects.css">
-  <!-- <script src="/preferences.js"></script>
+  <script src="/preferences.js"></script>
   <script nonce="__init__">
     const preferences = PREFERENCES("{{ page.preferences }}"); // Scoped localStorage proxy
     const prefer = {{ site.preferences | jsonify }};  // Defaults, updates cache in this object
@@ -28,9 +28,7 @@
         prefer[k] = preferences.retain(k, prefer[k], { force: false });  // init
         return [k, on => prefer[k] = preferences.use(k)(on)];  // call
       }));
-  </script> -->
-  <link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet"/>
-  <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
+  </script>
 </head>
 <body>
   <div id="title-stack" class="brand" role="banner" aria-label="Project title">
@@ -56,27 +54,6 @@
   <div id="footer">
     &nbsp;
   </div>
-<script>
-  const map = new maplibregl.Map({
-    container:'map',
-    ...({{ site.data.map.config | jsonify }}),
-  });
-
-  // add your data as sources + layers you control
-  map.on('load', async () => {
-    {% for kv in site.data.map.layers -%}
-    {%- assign k = kv[0] -%}
-    {%- assign layer = kv[1] -%}
-    map.addSource('{{ k }}', { type:'geojson', data: '/map/layers/{{ layer.file }}.geo.json' });
-    map.addLayer({ id:'{{ k }}-{{ layer.type }}', type:'{{ layer.type }}', source:'{{ k }}',
-      paint: {{ layer.paint | jsonify }} });
-    {%- endfor %}
-  });
-
-  map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "bottom-right");
-
-  // const setVis = (id, on) => map.setLayoutProperty(id, 'visibility', on ? 'visible' : 'none');
-  // setVis('parks-fill', false); // start hidden
-</script>
+  {% include map.html %}
 </body>
 </html>

@@ -30,7 +30,7 @@
   --fg-inverse: oklch(0.1076 0 0);
   --sh: #151a1a;
   --stroke: oklch(25.906% 0.00488 39.13);
-  --shade-hard: oklch(25.786% 0.00346 165.253 / 0.95);
+  --shade-hard: #222423;
   --shade: #2224248c;
   --border: rgb(0 0 0 / 20%);
   --border-inverse: rgb(255 255 255 / 70%);

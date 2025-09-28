@@ -42,12 +42,13 @@ const PREFERENCES = (() => {
 document.addEventListener('DOMContentLoaded', () => {
   const button = document.getElementById("preferences-toggle");
   const form = document.getElementById("preferences");
-  button.addEventListener('click', () => {
+  button?.addEventListener('click', () => {
     const expanded = button.getAttribute('aria-expanded') === 'true';
     button.setAttribute('aria-expanded', String(!expanded));
     form.hidden = expanded;
   });
 
+  if (!form) return;
   for (const input of form.elements) {
     input.checked = PREFERENCES(form.dataset.scope).retrieve(input.name);
   }
