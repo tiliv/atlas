@@ -14,7 +14,7 @@ Over time, the site's presentation will change drastically as we shape it to hel
 
 To use the developer [API Keys](https://support.socrata.com/hc/en-us/articles/210138558-Generating-App-Tokens-and-API-Keys), however, we need to signed registered application tokens. The data platform accepts authentication only as a user's normal session, or an sign app token by the API key. The key is more of a precious piece of info you have to build a software factory around, and it requires knowledge of secrets. To do this, a backend is traditionally required.
 
-We expect that as the [Anecdote](https://anecdote.discoverywritten.com) implementation evolves in tandem, we can deliver a solution that works for people on the ground, at the point of inquiry.
+We expect that as the [Anecdote](https://github.com/tiliv/anecdote) implementation evolves in tandem, we can deliver a solution that works for people on the ground, at the point of inquiry.
 
 Our mission is to make possible new [pro-social](https://en.wikipedia.org/wiki/Prosocial_behavior) behaviors with our own data. As we structure data for need, we will obstruct multi-national and national usage of it. This is our data, and we arrange it for our communities. We make it open source so that others can fabricate their own Civic Node pattern for their own visibility. Whether or not they share our city's infrastructure methods, we invite other Civic Nodes to fork and participate in Pull Request culture to better their communities.
 
