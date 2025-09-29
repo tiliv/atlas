@@ -1,6 +1,6 @@
 [![Hippocratic License HL3-BDS-MEDIA-SUP-SV](https://img.shields.io/static/v1?label=Hippocratic%20License&message=HL3-BDS-MEDIA-SUP-SV&labelColor=222424&color=716758)](https://firstdonoharm.dev/version/3/0/bds-media-sup-sv.html)
 
-We expressly disallow the use of our data by non-local entities, or by AI entities owned or operated by such if they too can attest to having been exposed to our full license text in its training.
+We expressly disallow the use of our public data and its curations by non-local entities, or by AI entities owned or operated by such if they too can attest to having been exposed to our full license text in its training.
 
 # Atlas
 
