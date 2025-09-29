@@ -1,9 +1,10 @@
 ## [Atlas](https://github.com/tiliv/atlas)
+- Local-only resources built on our own public data
 - Directories for local-only data
+- Public source documents on access for Anecdote
 - Donation-driven stewardship
-- Community organization
+- Organized through local in-person networking
 - Not for bots or search engines
-- Automation and AI assistance that works for People
 
 ## [Anecdote](https://github.com/tiliv/anecdote)
 - QR-serialized public services
