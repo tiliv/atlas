@@ -12,7 +12,7 @@ Our work is in progress and in the open, currently [https://atlas.discoverywritt
 
 Over time, the site's presentation will change drastically as we shape it to help people use the public data meticulously made available to us in the Open Data philosophy. The [Socrata](https://dev.socrata.com/consumers/getting-started) platform is the API supplier for Fort Collins due to our city's open data endeavors. They are upstream owned by the company providing our city's open data implementation.
 
-To use the developer [API Keys](https://support.socrata.com/hc/en-us/articles/210138558-Generating-App-Tokens-and-API-Keys), however, we need to sign registered application tokens. The data platform accepts authentication only as a user's normal session, or an sign app token by the API key. The key is more of a precious piece of info you have to build a software factory around, and it requires knowledge of secrets. To do this, a backend is traditionally required.
+To use the developer [API Keys](https://support.socrata.com/hc/en-us/articles/210138558-Generating-App-Tokens-and-API-Keys), however, we need to sign registered application tokens. The data platform accepts authentication only as a user's normal session, or an app token signed by the API key. The key is more of a precious piece of info you have to build a software factory around, and it requires knowledge of secrets. To do this, a backend is traditionally required.
 
 We expect that as the [Anecdote](https://github.com/tiliv/anecdote) implementation evolves in tandem, we can deliver a solution that works for people on the ground, at the point of inquiry.
 
