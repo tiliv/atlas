@@ -8,7 +8,7 @@ A projects board for furthering civic self-comprehension without algorithms.
 
 ## Direction
 
-Our work is in progress and in the open, currently [https://atlas.discoverywritten.com](https://atlas.discoverywritten.com). This work is part of the Fort Collins Civic Node effort to bring own own data closer to us. FCCN "Antibody" leads this resource's design and implementation. You are invited to get in contact. Our [Contribute](https://github.com/tiliv/atlas/wiki/Contribute) and [Projects](https://github.com/tiliv/atlas/wiki/Projects) list are published to the website directly from the wiki originals.
+Our work is in progress and in the open, currently [https://atlas.discoverywritten.com](https://atlas.discoverywritten.com). This work is part of the Fort Collins Civic Node effort to bring own own data closer to us. [FCCN "Antibody"](https://github.com/FCCN-ANTIBODY) leads this resource's design and implementation. You are invited to get in contact. Our [Contribute](https://github.com/tiliv/atlas/wiki/Contribute) and [Projects](https://github.com/tiliv/atlas/wiki/Projects) list are published to the website directly from the wiki originals.
 
 Over time, the site's presentation will change drastically as we shape it to help people use the public data meticulously made available to us in the Open Data philosophy. The [Socrata](https://dev.socrata.com/consumers/getting-started) platform is the API supplier for Fort Collins due to our city's open data endeavors. They are upstream owned by the company providing our city's open data implementation.
 
