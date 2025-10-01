@@ -2,7 +2,7 @@
 - Local-only resources built on our own public data
 - Directories for local-only data
 - Public source documents on access for Anecdote
-- Donation-driven stewardship
+- Donation-driven stewardship for source projects we host
 - Organized through local in-person networking
 - Not for bots or search engines
 
